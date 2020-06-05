@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmotionsRecognitionDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Full">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Number" Type="float" />
+          <Property Name="EnglishSentence" Type="nvarchar" MaxLength="255" />
+          <Property Name="PolishSentence" Type="nvarchar" MaxLength="255" />
+          <Property Name="F4" Type="float" />
+          <Property Name="F5" Type="float" />
+          <Property Name="ValenceAll" Type="float" />
+          <Property Name="ArousalAll" Type="float" />
+          <Property Name="DominanceAll" Type="float" />
+          <Property Name="OriginAll" Type="float" />
+          <Property Name="SignificanceAll" Type="float" />
+          <Property Name="SourceAll" Type="float" />
+          <Property Name="Valence Main Sample" Type="float" />
+          <Property Name="Valence Main Sample1" Type="float" />
+          <Property Name="Valence Main Sample2" Type="float" />
+          <Property Name="Valence Main Sample3" Type="float" />
+          <Property Name="Valence Main Sample4" Type="float" />
+          <Property Name="Valence Main Sample Female" Type="float" />
+          <Property Name="Valence Main Sample Female1" Type="float" />
+          <Property Name="Valence Main Sample Female2" Type="float" />
+          <Property Name="Valence Main Sample Female3" Type="float" />
+          <Property Name="Valence Main Sample Female4" Type="float" />
+          <Property Name="Valence Main Sample Male" Type="float" />
+          <Property Name="Valence Main Sample Male1" Type="float" />
+          <Property Name="Valence Main Sample Male2" Type="float" />
+          <Property Name="Valence Main Sample Male3" Type="float" />
+          <Property Name="Valence Main Sample Male4" Type="float" />
+          <Property Name="Valence psych" Type="float" />
+          <Property Name="Valence psych1" Type="float" />
+          <Property Name="Valence psych2" Type="float" />
+          <Property Name="Valence psych3" Type="float" />
+          <Property Name="Valence psych4" Type="float" />
+          <Property Name="Arousal Main Sample" Type="float" />
+          <Property Name="Arousal Main Sample1" Type="float" />
+          <Property Name="Arousal Main Sample2" Type="float" />
+          <Property Name="Arousal Main Sample3" Type="float" />
+          <Property Name="Arousal Main Sample4" Type="float" />
+          <Property Name="Arousal Main Sample Female" Type="float" />
+          <Property Name="Arousal Main Sample Female1" Type="float" />
+          <Property Name="Arousal Main Sample Female2" Type="float" />
+          <Property Name="Arousal Main Sample Female3" Type="float" />
+          <Property Name="Arousal Main Sample Female4" Type="float" />
+          <Property Name="Arousal Main Sample  Male" Type="float" />
+          <Property Name="Arousal Main Sample  Male1" Type="float" />
+          <Property Name="Arousal Main Sample  Male2" Type="float" />
+          <Property Name="Arousal Main Sample  Male3" Type="float" />
+          <Property Name="Arousal Main Sample  Male4" Type="float" />
+          <Property Name="Arousal psych" Type="float" />
+          <Property Name="Arousal psych1" Type="float" />
+          <Property Name="Arousal psych2" Type="float" />
+          <Property Name="Arousal psych3" Type="float" />
+          <Property Name="Arousal psych4" Type="float" />
+          <Property Name="Dominance Main Sample" Type="float" />
+          <Property Name="Dominance Main Sample1" Type="float" />
+          <Property Name="Dominance Main Sample2" Type="float" />
+          <Property Name="Dominance Main Sample3" Type="float" />
+          <Property Name="Dominance Main Sample4" Type="float" />
+          <Property Name="Dominance Main Sample Female" Type="float" />
+          <Property Name="Dominance Main Sample Female1" Type="float" />
+          <Property Name="Dominance Main Sample Female2" Type="float" />
+          <Property Name="Dominance Main Sample Female3" Type="float" />
+          <Property Name="Dominance Main Sample Female4" Type="float" />
+          <Property Name="Dominance Main Sample Male" Type="float" />
+          <Property Name="Dominance Main Sample Male1" Type="float" />
+          <Property Name="Dominance Main Sample Male2" Type="float" />
+          <Property Name="Dominance Main Sample Male3" Type="float" />
+          <Property Name="Dominance Main Sample Male4" Type="float" />
+          <Property Name="Dominance psych" Type="float" />
+          <Property Name="Dominance psych1" Type="float" />
+          <Property Name="Dominance psych2" Type="float" />
+          <Property Name="Dominance psych3" Type="float" />
+          <Property Name="Dominance psych4" Type="float" />
+          <Property Name="Origin Main Sample" Type="float" />
+          <Property Name="Origin Main Sample1" Type="float" />
+          <Property Name="Origin Main Sample2" Type="float" />
+          <Property Name="Origin Main Sample3" Type="float" />
+          <Property Name="Origin Main Sample4" Type="float" />
+          <Property Name="Origin Main Sample Female" Type="float" />
+          <Property Name="Origin Main Sample Female1" Type="float" />
+          <Property Name="Origin Main Sample Female2" Type="float" />
+          <Property Name="Origin Main Sample Female3" Type="float" />
+          <Property Name="Origin Main Sample Female4" Type="float" />
+          <Property Name="Origin Main Sample Male" Type="float" />
+          <Property Name="Origin Main Sample Male1" Type="float" />
+          <Property Name="Origin Main Sample Male2" Type="float" />
+          <Property Name="Origin Main Sample Male3" Type="float" />
+          <Property Name="Origin Main Sample Male4" Type="float" />
+          <Property Name="Origin psych" Type="float" />
+          <Property Name="Origin psych1" Type="float" />
+          <Property Name="Origin psych2" Type="float" />
+          <Property Name="Origin psych3" Type="float" />
+          <Property Name="Origin psych4" Type="float" />
+          <Property Name="Significance Main Sample" Type="float" />
+          <Property Name="Significance Main Sample1" Type="float" />
+          <Property Name="Significance Main Sample2" Type="float" />
+          <Property Name="Significance Main Sample3" Type="float" />
+          <Property Name="Significance Main Sample4" Type="float" />
+          <Property Name="Significance Main Sample Female" Type="float" />
+          <Property Name="Significance Main Sample Female1" Type="float" />
+          <Property Name="Significance Main Sample Female2" Type="float" />
+          <Property Name="Significance Main Sample Female3" Type="float" />
+          <Property Name="Significance Main Sample Female4" Type="float" />
+          <Property Name="Significance Main Sample Male" Type="float" />
+          <Property Name="Significance Main Sample Male1" Type="float" />
+          <Property Name="Significance Main Sample Male2" Type="float" />
+          <Property Name="Significance Main Sample Male3" Type="float" />
+          <Property Name="Significance Main Sample Male4" Type="float" />
+          <Property Name="Significance psych" Type="float" />
+          <Property Name="Significance psych1" Type="float" />
+          <Property Name="Significance psych2" Type="float" />
+          <Property Name="Significance psych3" Type="float" />
+          <Property Name="Significance psych4" Type="float" />
+          <Property Name="Source Main Sample" Type="float" />
+          <Property Name="Source Main Sample1" Type="float" />
+          <Property Name="Source Main Sample2" Type="float" />
+          <Property Name="Source Main Sample3" Type="float" />
+          <Property Name="Source Main Sample4" Type="float" />
+          <Property Name="Source Main Sample Female" Type="float" />
+          <Property Name="Source Main Sample Female1" Type="float" />
+          <Property Name="Source Main Sample Female2" Type="float" />
+          <Property Name="Source Main Sample Female3" Type="float" />
+          <Property Name="Source Main Sample Female4" Type="float" />
+          <Property Name="Source Main Sample Male" Type="float" />
+          <Property Name="Source Main Sample Male1" Type="float" />
+          <Property Name="Source Main Sample Male2" Type="float" />
+          <Property Name="Source Main Sample Male3" Type="float" />
+          <Property Name="Source Main Sample Male4" Type="float" />
+          <Property Name="Source psych" Type="float" />
+          <Property Name="Source psych1" Type="float" />
+          <Property Name="Source psych2" Type="float" />
+          <Property Name="Source psych3" Type="float" />
+          <Property Name="Source psych4" Type="float" />
+          <Property Name="F132" Type="float" />
+          <Property Name="F133" Type="float" />
+          <Property Name="F134" Type="float" />
+          <Property Name="F135" Type="float" />
+          <Property Name="F136" Type="float" />
+          <Property Name="F137" Type="float" />
+          <Property Name="F138" Type="float" />
+          <Property Name="F139" Type="float" />
+          <Property Name="F140" Type="float" />
+          <Property Name="F141" Type="float" />
+          <Property Name="F142" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EmotionsRecognitionDbModelStoreContainer">
+          <EntitySet Name="Full" EntityType="Self.Full" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmotionsRecognitionDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EmotionsRecognitionDbContext" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Fulls" EntityType="EmotionsRecognitionDbModel.Full" />
+        </EntityContainer>
+        <EntityType Name="Full">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Number" Type="Double" />
+          <Property Name="EnglishSentence" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PolishSentence" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="F4" Type="Double" />
+          <Property Name="F5" Type="Double" />
+          <Property Name="ValenceAll" Type="Double" />
+          <Property Name="ArousalAll" Type="Double" />
+          <Property Name="DominanceAll" Type="Double" />
+          <Property Name="OriginAll" Type="Double" />
+          <Property Name="SignificanceAll" Type="Double" />
+          <Property Name="SourceAll" Type="Double" />
+          <Property Name="Valence_Main_Sample" Type="Double" />
+          <Property Name="Valence_Main_Sample1" Type="Double" />
+          <Property Name="Valence_Main_Sample2" Type="Double" />
+          <Property Name="Valence_Main_Sample3" Type="Double" />
+          <Property Name="Valence_Main_Sample4" Type="Double" />
+          <Property Name="Valence_Main_Sample_Female" Type="Double" />
+          <Property Name="Valence_Main_Sample_Female1" Type="Double" />
+          <Property Name="Valence_Main_Sample_Female2" Type="Double" />
+          <Property Name="Valence_Main_Sample_Female3" Type="Double" />
+          <Property Name="Valence_Main_Sample_Female4" Type="Double" />
+          <Property Name="Valence_Main_Sample_Male" Type="Double" />
+          <Property Name="Valence_Main_Sample_Male1" Type="Double" />
+          <Property Name="Valence_Main_Sample_Male2" Type="Double" />
+          <Property Name="Valence_Main_Sample_Male3" Type="Double" />
+          <Property Name="Valence_Main_Sample_Male4" Type="Double" />
+          <Property Name="Valence_psych" Type="Double" />
+          <Property Name="Valence_psych1" Type="Double" />
+          <Property Name="Valence_psych2" Type="Double" />
+          <Property Name="Valence_psych3" Type="Double" />
+          <Property Name="Valence_psych4" Type="Double" />
+          <Property Name="Arousal_Main_Sample" Type="Double" />
+          <Property Name="Arousal_Main_Sample1" Type="Double" />
+          <Property Name="Arousal_Main_Sample2" Type="Double" />
+          <Property Name="Arousal_Main_Sample3" Type="Double" />
+          <Property Name="Arousal_Main_Sample4" Type="Double" />
+          <Property Name="Arousal_Main_Sample_Female" Type="Double" />
+          <Property Name="Arousal_Main_Sample_Female1" Type="Double" />
+          <Property Name="Arousal_Main_Sample_Female2" Type="Double" />
+          <Property Name="Arousal_Main_Sample_Female3" Type="Double" />
+          <Property Name="Arousal_Main_Sample_Female4" Type="Double" />
+          <Property Name="Arousal_Main_Sample__Male" Type="Double" />
+          <Property Name="Arousal_Main_Sample__Male1" Type="Double" />
+          <Property Name="Arousal_Main_Sample__Male2" Type="Double" />
+          <Property Name="Arousal_Main_Sample__Male3" Type="Double" />
+          <Property Name="Arousal_Main_Sample__Male4" Type="Double" />
+          <Property Name="Arousal_psych" Type="Double" />
+          <Property Name="Arousal_psych1" Type="Double" />
+          <Property Name="Arousal_psych2" Type="Double" />
+          <Property Name="Arousal_psych3" Type="Double" />
+          <Property Name="Arousal_psych4" Type="Double" />
+          <Property Name="Dominance_Main_Sample" Type="Double" />
+          <Property Name="Dominance_Main_Sample1" Type="Double" />
+          <Property Name="Dominance_Main_Sample2" Type="Double" />
+          <Property Name="Dominance_Main_Sample3" Type="Double" />
+          <Property Name="Dominance_Main_Sample4" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Female" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Female1" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Female2" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Female3" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Female4" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Male" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Male1" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Male2" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Male3" Type="Double" />
+          <Property Name="Dominance_Main_Sample_Male4" Type="Double" />
+          <Property Name="Dominance_psych" Type="Double" />
+          <Property Name="Dominance_psych1" Type="Double" />
+          <Property Name="Dominance_psych2" Type="Double" />
+          <Property Name="Dominance_psych3" Type="Double" />
+          <Property Name="Dominance_psych4" Type="Double" />
+          <Property Name="Origin_Main_Sample" Type="Double" />
+          <Property Name="Origin_Main_Sample1" Type="Double" />
+          <Property Name="Origin_Main_Sample2" Type="Double" />
+          <Property Name="Origin_Main_Sample3" Type="Double" />
+          <Property Name="Origin_Main_Sample4" Type="Double" />
+          <Property Name="Origin_Main_Sample_Female" Type="Double" />
+          <Property Name="Origin_Main_Sample_Female1" Type="Double" />
+          <Property Name="Origin_Main_Sample_Female2" Type="Double" />
+          <Property Name="Origin_Main_Sample_Female3" Type="Double" />
+          <Property Name="Origin_Main_Sample_Female4" Type="Double" />
+          <Property Name="Origin_Main_Sample_Male" Type="Double" />
+          <Property Name="Origin_Main_Sample_Male1" Type="Double" />
+          <Property Name="Origin_Main_Sample_Male2" Type="Double" />
+          <Property Name="Origin_Main_Sample_Male3" Type="Double" />
+          <Property Name="Origin_Main_Sample_Male4" Type="Double" />
+          <Property Name="Origin_psych" Type="Double" />
+          <Property Name="Origin_psych1" Type="Double" />
+          <Property Name="Origin_psych2" Type="Double" />
+          <Property Name="Origin_psych3" Type="Double" />
+          <Property Name="Origin_psych4" Type="Double" />
+          <Property Name="Significance_Main_Sample" Type="Double" />
+          <Property Name="Significance_Main_Sample1" Type="Double" />
+          <Property Name="Significance_Main_Sample2" Type="Double" />
+          <Property Name="Significance_Main_Sample3" Type="Double" />
+          <Property Name="Significance_Main_Sample4" Type="Double" />
+          <Property Name="Significance_Main_Sample_Female" Type="Double" />
+          <Property Name="Significance_Main_Sample_Female1" Type="Double" />
+          <Property Name="Significance_Main_Sample_Female2" Type="Double" />
+          <Property Name="Significance_Main_Sample_Female3" Type="Double" />
+          <Property Name="Significance_Main_Sample_Female4" Type="Double" />
+          <Property Name="Significance_Main_Sample_Male" Type="Double" />
+          <Property Name="Significance_Main_Sample_Male1" Type="Double" />
+          <Property Name="Significance_Main_Sample_Male2" Type="Double" />
+          <Property Name="Significance_Main_Sample_Male3" Type="Double" />
+          <Property Name="Significance_Main_Sample_Male4" Type="Double" />
+          <Property Name="Significance_psych" Type="Double" />
+          <Property Name="Significance_psych1" Type="Double" />
+          <Property Name="Significance_psych2" Type="Double" />
+          <Property Name="Significance_psych3" Type="Double" />
+          <Property Name="Significance_psych4" Type="Double" />
+          <Property Name="Source_Main_Sample" Type="Double" />
+          <Property Name="Source_Main_Sample1" Type="Double" />
+          <Property Name="Source_Main_Sample2" Type="Double" />
+          <Property Name="Source_Main_Sample3" Type="Double" />
+          <Property Name="Source_Main_Sample4" Type="Double" />
+          <Property Name="Source_Main_Sample_Female" Type="Double" />
+          <Property Name="Source_Main_Sample_Female1" Type="Double" />
+          <Property Name="Source_Main_Sample_Female2" Type="Double" />
+          <Property Name="Source_Main_Sample_Female3" Type="Double" />
+          <Property Name="Source_Main_Sample_Female4" Type="Double" />
+          <Property Name="Source_Main_Sample_Male" Type="Double" />
+          <Property Name="Source_Main_Sample_Male1" Type="Double" />
+          <Property Name="Source_Main_Sample_Male2" Type="Double" />
+          <Property Name="Source_Main_Sample_Male3" Type="Double" />
+          <Property Name="Source_Main_Sample_Male4" Type="Double" />
+          <Property Name="Source_psych" Type="Double" />
+          <Property Name="Source_psych1" Type="Double" />
+          <Property Name="Source_psych2" Type="Double" />
+          <Property Name="Source_psych3" Type="Double" />
+          <Property Name="Source_psych4" Type="Double" />
+          <Property Name="F132" Type="Double" />
+          <Property Name="F133" Type="Double" />
+          <Property Name="F134" Type="Double" />
+          <Property Name="F135" Type="Double" />
+          <Property Name="F136" Type="Double" />
+          <Property Name="F137" Type="Double" />
+          <Property Name="F138" Type="Double" />
+          <Property Name="F139" Type="Double" />
+          <Property Name="F140" Type="Double" />
+          <Property Name="F141" Type="Double" />
+          <Property Name="F142" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmotionsRecognitionDbModelStoreContainer" CdmEntityContainer="EmotionsRecognitionDbContext" >
+          <EntitySetMapping Name="Fulls">
+            <EntityTypeMapping TypeName="EmotionsRecognitionDbModel.Full">
+              <MappingFragment StoreEntitySet="Full">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="F142" ColumnName="F142" />
+                <ScalarProperty Name="F141" ColumnName="F141" />
+                <ScalarProperty Name="F140" ColumnName="F140" />
+                <ScalarProperty Name="F139" ColumnName="F139" />
+                <ScalarProperty Name="F138" ColumnName="F138" />
+                <ScalarProperty Name="F137" ColumnName="F137" />
+                <ScalarProperty Name="F136" ColumnName="F136" />
+                <ScalarProperty Name="F135" ColumnName="F135" />
+                <ScalarProperty Name="F134" ColumnName="F134" />
+                <ScalarProperty Name="F133" ColumnName="F133" />
+                <ScalarProperty Name="F132" ColumnName="F132" />
+                <ScalarProperty Name="Source_psych4" ColumnName="Source psych4" />
+                <ScalarProperty Name="Source_psych3" ColumnName="Source psych3" />
+                <ScalarProperty Name="Source_psych2" ColumnName="Source psych2" />
+                <ScalarProperty Name="Source_psych1" ColumnName="Source psych1" />
+                <ScalarProperty Name="Source_psych" ColumnName="Source psych" />
+                <ScalarProperty Name="Source_Main_Sample_Male4" ColumnName="Source Main Sample Male4" />
+                <ScalarProperty Name="Source_Main_Sample_Male3" ColumnName="Source Main Sample Male3" />
+                <ScalarProperty Name="Source_Main_Sample_Male2" ColumnName="Source Main Sample Male2" />
+                <ScalarProperty Name="Source_Main_Sample_Male1" ColumnName="Source Main Sample Male1" />
+                <ScalarProperty Name="Source_Main_Sample_Male" ColumnName="Source Main Sample Male" />
+                <ScalarProperty Name="Source_Main_Sample_Female4" ColumnName="Source Main Sample Female4" />
+                <ScalarProperty Name="Source_Main_Sample_Female3" ColumnName="Source Main Sample Female3" />
+                <ScalarProperty Name="Source_Main_Sample_Female2" ColumnName="Source Main Sample Female2" />
+                <ScalarProperty Name="Source_Main_Sample_Female1" ColumnName="Source Main Sample Female1" />
+                <ScalarProperty Name="Source_Main_Sample_Female" ColumnName="Source Main Sample Female" />
+                <ScalarProperty Name="Source_Main_Sample4" ColumnName="Source Main Sample4" />
+                <ScalarProperty Name="Source_Main_Sample3" ColumnName="Source Main Sample3" />
+                <ScalarProperty Name="Source_Main_Sample2" ColumnName="Source Main Sample2" />
+                <ScalarProperty Name="Source_Main_Sample1" ColumnName="Source Main Sample1" />
+                <ScalarProperty Name="Source_Main_Sample" ColumnName="Source Main Sample" />
+                <ScalarProperty Name="Significance_psych4" ColumnName="Significance psych4" />
+                <ScalarProperty Name="Significance_psych3" ColumnName="Significance psych3" />
+                <ScalarProperty Name="Significance_psych2" ColumnName="Significance psych2" />
+                <ScalarProperty Name="Significance_psych1" ColumnName="Significance psych1" />
+                <ScalarProperty Name="Significance_psych" ColumnName="Significance psych" />
+                <ScalarProperty Name="Significance_Main_Sample_Male4" ColumnName="Significance Main Sample Male4" />
+                <ScalarProperty Name="Significance_Main_Sample_Male3" ColumnName="Significance Main Sample Male3" />
+                <ScalarProperty Name="Significance_Main_Sample_Male2" ColumnName="Significance Main Sample Male2" />
+                <ScalarProperty Name="Significance_Main_Sample_Male1" ColumnName="Significance Main Sample Male1" />
+                <ScalarProperty Name="Significance_Main_Sample_Male" ColumnName="Significance Main Sample Male" />
+                <ScalarProperty Name="Significance_Main_Sample_Female4" ColumnName="Significance Main Sample Female4" />
+                <ScalarProperty Name="Significance_Main_Sample_Female3" ColumnName="Significance Main Sample Female3" />
+                <ScalarProperty Name="Significance_Main_Sample_Female2" ColumnName="Significance Main Sample Female2" />
+                <ScalarProperty Name="Significance_Main_Sample_Female1" ColumnName="Significance Main Sample Female1" />
+                <ScalarProperty Name="Significance_Main_Sample_Female" ColumnName="Significance Main Sample Female" />
+                <ScalarProperty Name="Significance_Main_Sample4" ColumnName="Significance Main Sample4" />
+                <ScalarProperty Name="Significance_Main_Sample3" ColumnName="Significance Main Sample3" />
+                <ScalarProperty Name="Significance_Main_Sample2" ColumnName="Significance Main Sample2" />
+                <ScalarProperty Name="Significance_Main_Sample1" ColumnName="Significance Main Sample1" />
+                <ScalarProperty Name="Significance_Main_Sample" ColumnName="Significance Main Sample" />
+                <ScalarProperty Name="Origin_psych4" ColumnName="Origin psych4" />
+                <ScalarProperty Name="Origin_psych3" ColumnName="Origin psych3" />
+                <ScalarProperty Name="Origin_psych2" ColumnName="Origin psych2" />
+                <ScalarProperty Name="Origin_psych1" ColumnName="Origin psych1" />
+                <ScalarProperty Name="Origin_psych" ColumnName="Origin psych" />
+                <ScalarProperty Name="Origin_Main_Sample_Male4" ColumnName="Origin Main Sample Male4" />
+                <ScalarProperty Name="Origin_Main_Sample_Male3" ColumnName="Origin Main Sample Male3" />
+                <ScalarProperty Name="Origin_Main_Sample_Male2" ColumnName="Origin Main Sample Male2" />
+                <ScalarProperty Name="Origin_Main_Sample_Male1" ColumnName="Origin Main Sample Male1" />
+                <ScalarProperty Name="Origin_Main_Sample_Male" ColumnName="Origin Main Sample Male" />
+                <ScalarProperty Name="Origin_Main_Sample_Female4" ColumnName="Origin Main Sample Female4" />
+                <ScalarProperty Name="Origin_Main_Sample_Female3" ColumnName="Origin Main Sample Female3" />
+                <ScalarProperty Name="Origin_Main_Sample_Female2" ColumnName="Origin Main Sample Female2" />
+                <ScalarProperty Name="Origin_Main_Sample_Female1" ColumnName="Origin Main Sample Female1" />
+                <ScalarProperty Name="Origin_Main_Sample_Female" ColumnName="Origin Main Sample Female" />
+                <ScalarProperty Name="Origin_Main_Sample4" ColumnName="Origin Main Sample4" />
+                <ScalarProperty Name="Origin_Main_Sample3" ColumnName="Origin Main Sample3" />
+                <ScalarProperty Name="Origin_Main_Sample2" ColumnName="Origin Main Sample2" />
+                <ScalarProperty Name="Origin_Main_Sample1" ColumnName="Origin Main Sample1" />
+                <ScalarProperty Name="Origin_Main_Sample" ColumnName="Origin Main Sample" />
+                <ScalarProperty Name="Dominance_psych4" ColumnName="Dominance psych4" />
+                <ScalarProperty Name="Dominance_psych3" ColumnName="Dominance psych3" />
+                <ScalarProperty Name="Dominance_psych2" ColumnName="Dominance psych2" />
+                <ScalarProperty Name="Dominance_psych1" ColumnName="Dominance psych1" />
+                <ScalarProperty Name="Dominance_psych" ColumnName="Dominance psych" />
+                <ScalarProperty Name="Dominance_Main_Sample_Male4" ColumnName="Dominance Main Sample Male4" />
+                <ScalarProperty Name="Dominance_Main_Sample_Male3" ColumnName="Dominance Main Sample Male3" />
+                <ScalarProperty Name="Dominance_Main_Sample_Male2" ColumnName="Dominance Main Sample Male2" />
+                <ScalarProperty Name="Dominance_Main_Sample_Male1" ColumnName="Dominance Main Sample Male1" />
+                <ScalarProperty Name="Dominance_Main_Sample_Male" ColumnName="Dominance Main Sample Male" />
+                <ScalarProperty Name="Dominance_Main_Sample_Female4" ColumnName="Dominance Main Sample Female4" />
+                <ScalarProperty Name="Dominance_Main_Sample_Female3" ColumnName="Dominance Main Sample Female3" />
+                <ScalarProperty Name="Dominance_Main_Sample_Female2" ColumnName="Dominance Main Sample Female2" />
+                <ScalarProperty Name="Dominance_Main_Sample_Female1" ColumnName="Dominance Main Sample Female1" />
+                <ScalarProperty Name="Dominance_Main_Sample_Female" ColumnName="Dominance Main Sample Female" />
+                <ScalarProperty Name="Dominance_Main_Sample4" ColumnName="Dominance Main Sample4" />
+                <ScalarProperty Name="Dominance_Main_Sample3" ColumnName="Dominance Main Sample3" />
+                <ScalarProperty Name="Dominance_Main_Sample2" ColumnName="Dominance Main Sample2" />
+                <ScalarProperty Name="Dominance_Main_Sample1" ColumnName="Dominance Main Sample1" />
+                <ScalarProperty Name="Dominance_Main_Sample" ColumnName="Dominance Main Sample" />
+                <ScalarProperty Name="Arousal_psych4" ColumnName="Arousal psych4" />
+                <ScalarProperty Name="Arousal_psych3" ColumnName="Arousal psych3" />
+                <ScalarProperty Name="Arousal_psych2" ColumnName="Arousal psych2" />
+                <ScalarProperty Name="Arousal_psych1" ColumnName="Arousal psych1" />
+                <ScalarProperty Name="Arousal_psych" ColumnName="Arousal psych" />
+                <ScalarProperty Name="Arousal_Main_Sample__Male4" ColumnName="Arousal Main Sample  Male4" />
+                <ScalarProperty Name="Arousal_Main_Sample__Male3" ColumnName="Arousal Main Sample  Male3" />
+                <ScalarProperty Name="Arousal_Main_Sample__Male2" ColumnName="Arousal Main Sample  Male2" />
+                <ScalarProperty Name="Arousal_Main_Sample__Male1" ColumnName="Arousal Main Sample  Male1" />
+                <ScalarProperty Name="Arousal_Main_Sample__Male" ColumnName="Arousal Main Sample  Male" />
+                <ScalarProperty Name="Arousal_Main_Sample_Female4" ColumnName="Arousal Main Sample Female4" />
+                <ScalarProperty Name="Arousal_Main_Sample_Female3" ColumnName="Arousal Main Sample Female3" />
+                <ScalarProperty Name="Arousal_Main_Sample_Female2" ColumnName="Arousal Main Sample Female2" />
+                <ScalarProperty Name="Arousal_Main_Sample_Female1" ColumnName="Arousal Main Sample Female1" />
+                <ScalarProperty Name="Arousal_Main_Sample_Female" ColumnName="Arousal Main Sample Female" />
+                <ScalarProperty Name="Arousal_Main_Sample4" ColumnName="Arousal Main Sample4" />
+                <ScalarProperty Name="Arousal_Main_Sample3" ColumnName="Arousal Main Sample3" />
+                <ScalarProperty Name="Arousal_Main_Sample2" ColumnName="Arousal Main Sample2" />
+                <ScalarProperty Name="Arousal_Main_Sample1" ColumnName="Arousal Main Sample1" />
+                <ScalarProperty Name="Arousal_Main_Sample" ColumnName="Arousal Main Sample" />
+                <ScalarProperty Name="Valence_psych4" ColumnName="Valence psych4" />
+                <ScalarProperty Name="Valence_psych3" ColumnName="Valence psych3" />
+                <ScalarProperty Name="Valence_psych2" ColumnName="Valence psych2" />
+                <ScalarProperty Name="Valence_psych1" ColumnName="Valence psych1" />
+                <ScalarProperty Name="Valence_psych" ColumnName="Valence psych" />
+                <ScalarProperty Name="Valence_Main_Sample_Male4" ColumnName="Valence Main Sample Male4" />
+                <ScalarProperty Name="Valence_Main_Sample_Male3" ColumnName="Valence Main Sample Male3" />
+                <ScalarProperty Name="Valence_Main_Sample_Male2" ColumnName="Valence Main Sample Male2" />
+                <ScalarProperty Name="Valence_Main_Sample_Male1" ColumnName="Valence Main Sample Male1" />
+                <ScalarProperty Name="Valence_Main_Sample_Male" ColumnName="Valence Main Sample Male" />
+                <ScalarProperty Name="Valence_Main_Sample_Female4" ColumnName="Valence Main Sample Female4" />
+                <ScalarProperty Name="Valence_Main_Sample_Female3" ColumnName="Valence Main Sample Female3" />
+                <ScalarProperty Name="Valence_Main_Sample_Female2" ColumnName="Valence Main Sample Female2" />
+                <ScalarProperty Name="Valence_Main_Sample_Female1" ColumnName="Valence Main Sample Female1" />
+                <ScalarProperty Name="Valence_Main_Sample_Female" ColumnName="Valence Main Sample Female" />
+                <ScalarProperty Name="Valence_Main_Sample4" ColumnName="Valence Main Sample4" />
+                <ScalarProperty Name="Valence_Main_Sample3" ColumnName="Valence Main Sample3" />
+                <ScalarProperty Name="Valence_Main_Sample2" ColumnName="Valence Main Sample2" />
+                <ScalarProperty Name="Valence_Main_Sample1" ColumnName="Valence Main Sample1" />
+                <ScalarProperty Name="Valence_Main_Sample" ColumnName="Valence Main Sample" />
+                <ScalarProperty Name="SourceAll" ColumnName="SourceAll" />
+                <ScalarProperty Name="SignificanceAll" ColumnName="SignificanceAll" />
+                <ScalarProperty Name="OriginAll" ColumnName="OriginAll" />
+                <ScalarProperty Name="DominanceAll" ColumnName="DominanceAll" />
+                <ScalarProperty Name="ArousalAll" ColumnName="ArousalAll" />
+                <ScalarProperty Name="ValenceAll" ColumnName="ValenceAll" />
+                <ScalarProperty Name="F5" ColumnName="F5" />
+                <ScalarProperty Name="F4" ColumnName="F4" />
+                <ScalarProperty Name="PolishSentence" ColumnName="PolishSentence" />
+                <ScalarProperty Name="EnglishSentence" ColumnName="EnglishSentence" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -247,7 +247,7 @@ namespace EmotionsRecognition
             // Catch and display Face API errors.
             catch (APIErrorException f)
             {
-                MessageBox.Show(f.Message);
+                //MessageBox.Show(f.Message); //<----------------------------TUUUUUUUUUUUUUUUUUUUUUUUUUuu
                 return new List<DetectedFace>();
             }
             // Catch and display all other errors.
@@ -428,6 +428,26 @@ namespace EmotionsRecognition
 
         private async void btnStart_Click(object sender, RoutedEventArgs e) // TUUUUUUUUU
         {
+           
+            using (var db = new EmotionsRecognitionDbContext())
+            {
+                // Display all Blogs from the database
+                var rand = new Random();
+                int id = rand.Next(101);
+
+                var query = from b in db.Fulls
+                            where b.ID == id
+                            select b ;
+
+               
+                foreach (var item in query)
+                {
+
+                    textTextBlock.Text = item.PolishSentence;
+                }
+
+               
+            }
             mediaUriElement.Stop();
             mediaUriElement.Close();
             SetPlayButtons(false);
@@ -496,15 +516,15 @@ namespace EmotionsRecognition
             FacePhoto.Source = (ImageSource)d3d;
         }
 
-        private void btnPause_Click(object sender, RoutedEventArgs e) // TUUUUUUUUU
-        {
-            bool playing = mediaUriElement.IsPlaying;
-            if (playing)
-                mediaUriElement.Pause();
-            else
-                mediaUriElement.Play();
-            SetPlayButtons(!playing);
-        }
+        //private void btnPause_Click(object sender, RoutedEventArgs e) // TUUUUUUUUU
+        //{
+        //    bool playing = mediaUriElement.IsPlaying;
+        //    if (playing)
+        //        mediaUriElement.Pause();
+        //    else
+        //        mediaUriElement.Play();
+        //    SetPlayButtons(!playing);
+        //}
 
         private void MediaUriPlayer_MediaPositionChanged(object sender, EventArgs e)
         {

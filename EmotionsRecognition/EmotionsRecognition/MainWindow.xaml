@@ -11,77 +11,54 @@
     <Window.Resources>
         <local:EnumToBoolConverter x:Key="EnumToBoolConverter" />
     </Window.Resources>
-     <Grid>
+    <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-        </Grid.RowDefinitions>   
-        
-        <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    
-                    <!--<Button x:Name="btnOpen" Click="btnOpen_Click" Content="Open file ..."  Padding="4" Margin="4" />-->
-        
-                    <Label Content="Select camera:" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="cobVideoSource" Width="200" SelectionChanged="cobVideoSource_SelectionChanged" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    
-        <!--<TextBlock Text="Video Renderer:" VerticalAlignment="Center" Margin="4" />-->
-        <!--<RadioButton Content="VMR9" IsChecked="{Binding VideoRenderer, ElementName=mediaUriElement, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static players:VideoRendererType.VideoMixingRenderer9}}"
-                             VerticalAlignment="Center" />-->
-                    <!--<RadioButton Content="EVR" IsChecked="{Binding VideoRenderer, ElementName=mediaUriElement, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static players:VideoRendererType.EnhancedVideoRenderer}}"
-                             VerticalAlignment="Center" Margin="4,0" />-->
-        
-                    <TextBlock Text="Deeper Color:" VerticalAlignment="Center" Margin="4" />
-                    <CheckBox x:Name="chkDeeperColor" VerticalAlignment="Center" Margin="0,0,4,0" />
-                </StackPanel>
-            </Grid>
-            <TextBlock x:Name="errorText" Grid.Row="1" TextWrapping="Wrap" Foreground="IndianRed" Margin="4" />
-            <controls:MediaUriElement x:Name="mediaUriElement" Grid.Row="1"
-                                  DeeperColor="{Binding IsChecked, ElementName=chkDeeperColor}"
+            <!--<RowDefinition Height="*" />-->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center">
+
+            <!--<Button x:Name="btnOpen" Click="btnOpen_Click" Content="Open file ..."  Padding="4" Margin="4" />-->
+
+            <Label Content="Select camera:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cobVideoSource" Width="200" SelectionChanged="cobVideoSource_SelectionChanged" VerticalAlignment="Center"/>
+        </StackPanel>
+
+
+
+        <TextBlock x:Name="errorText" Grid.Row="1" TextWrapping="Wrap" Foreground="IndianRed" Margin="4" />
+        <controls:MediaUriElement x:Name="mediaUriElement" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0"
+                                 
                                   Margin="4" />
-            <controls:VideoCaptureElement x:Name="cameraCaptureElement" Grid.Row="1" EnableSampleGrabbing="False" Visibility="Collapsed"
-                                      DeeperColor="{Binding IsChecked, ElementName=chkDeeperColor}"
+        <controls:VideoCaptureElement x:Name="cameraCaptureElement" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" EnableSampleGrabbing="False" Visibility="Collapsed"
+                                      
                                       Margin="4"/>
-            
+
+
         <!--<Slider x:Name="slider" Grid.Row="2" IsMoveToPointEnabled="True" Orientation="Horizontal" ValueChanged="slider_ValueChanged" Margin="4" />-->
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
-                <Button x:Name="btnStop" Click="btnStop_Click" Content="Stop" MinWidth="50" Padding="4" Margin="4" />
-                <Button x:Name="btnStart" Click="btnStart_Click" Content="Start" MinWidth="50" Padding="4" Margin="4" />
-            <Button x:Name="btnPause" Click="btnPause_Click" Content="Pause" MinWidth="50" Padding="4" Margin="4" />
-            </StackPanel>
-        
-            <!--<StackPanel  Grid.Row="3" Orientation="Horizontal">
-                <Image x:Name="FacePhoto" Stretch="Uniform" Margin="0,0,0,50" MouseMove="FacePhoto_MouseMove" />
-                <DockPanel DockPanel.Dock="Bottom">
-                    <Button x:Name="BrowseButton" Width="72" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"
-                     Content="Browse..."
-                     Click="BrowseButton_Click" />
-                    <StatusBar VerticalAlignment="Bottom">
-                        <StatusBarItem>
-                            <TextBlock Name="faceDescriptionStatusBar" />
-                        </StatusBarItem>
-                    </StatusBar>
-                </DockPanel>
-            </StackPanel>-->
-        </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <!--<Button x:Name="btnStop" Click="btnStop_Click" Content="Stop" MinWidth="50" Padding="4" Margin="4" />-->
+            <Button x:Name="btnStart" Click="btnStart_Click" Content="Start" MinWidth="50" Padding="4" Margin="4" />
+            <!--<Button x:Name="btnPause" Click="btnPause_Click" Content="Pause" MinWidth="50" Padding="4" Margin="4" />-->
+        </StackPanel>
+        <TextBlock Grid.Column="2" Grid.Row="1" Width="244" FontSize="20" Height="Auto" HorizontalAlignment="Center" x:Name="textTextBlock" TextWrapping="Wrap" Margin="10"><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></TextBlock>
 
 
 
-        <Grid x:Name="BackPanel" Grid.Row="1">
+
+
+
+        <Grid x:Name="BackPanel" Grid.Row="3" Grid.ColumnSpan="3">
             <Image x:Name="FacePhoto" Stretch="Uniform" Margin="0,0,0,50" MouseMove="FacePhoto_MouseMove" />
             <DockPanel DockPanel.Dock="Bottom">
                 <Button x:Name="BrowseButton" Width="72" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"
@@ -94,5 +71,5 @@
                 </StatusBar>
             </DockPanel>
         </Grid>
-        </Grid>
+    </Grid>
 </Window>
