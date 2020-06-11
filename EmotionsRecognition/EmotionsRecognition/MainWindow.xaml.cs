@@ -425,7 +425,11 @@ namespace EmotionsRecognition
         }
 
         private MediaUriPlayer _player;
+<<<<<<< master
 
+=======
+        private System.Timers.Timer tm;
+>>>>>>> local
         private async void btnStart_Click(object sender, RoutedEventArgs e) // TUUUUUUUUU
         {
            
@@ -448,6 +452,14 @@ namespace EmotionsRecognition
 
                
             }
+<<<<<<< master
+=======
+            //tm = new System.Timers.Timer(2000);
+            //tm.Elapsed += OnTimedTakePictureEvent;
+            //tm.AutoReset = true;
+            //tm.Enabled = true;
+
+>>>>>>> local
             mediaUriElement.Stop();
             mediaUriElement.Close();
             SetPlayButtons(false);
@@ -504,6 +516,18 @@ namespace EmotionsRecognition
             await DetectFacesAsync(filePath, bitmapSource);
             
             //DialogResult = true;
+<<<<<<< master
+=======
+
+
+        }
+
+        private static void OnTimedTakePictureEvent(Object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
+                              e.SignalTime);
+        }
+>>>>>>> local
 
 
         }
