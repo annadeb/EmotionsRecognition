@@ -436,7 +436,7 @@ namespace EmotionsRecognition
 
         private MediaUriPlayer _player;
         private System.Timers.Timer tm;
-        private void btnStart_Click(object sender, RoutedEventArgs e) // TUUUUUUUUU
+        private async void btnStart_Click(object sender, RoutedEventArgs e) // TUUUUUUUUU
         {
            
             using (var db = new EmotionsRecognitionDbContext())
@@ -458,26 +458,15 @@ namespace EmotionsRecognition
 
                
             }
-            tm = new System.Timers.Timer(2000);
-            tm.Elapsed += OnTimedTakePictureEventAsync;
-            tm.AutoReset = true;
-            tm.Enabled = true;
-
-            
-            //DialogResult = true;
+            //tm = new System.Timers.Timer(2000);
+            //tm.Elapsed += OnTimedTakePictureEventAsync;
+            //tm.AutoReset = true;
+            //tm.Enabled = true;
 
 
-        }
-
-        private async void OnTimedTakePictureEventAsync(Object source, ElapsedEventArgs e)
-        {
-            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
-                              e.SignalTime);
-
-
-            //mediaUriElement.Stop();
-            //mediaUriElement.Close();
-            //SetPlayButtons(false);
+            mediaUriElement.Stop();
+            mediaUriElement.Close();
+            SetPlayButtons(false);
 
             IntPtr backBuffer = new IntPtr();
             _player = new MediaUriPlayer();
@@ -529,6 +518,19 @@ namespace EmotionsRecognition
 
             FacePhoto.Source = bitmapSource;
             await DetectFacesAsync(filePath, bitmapSource);
+
+            //DialogResult = true;
+
+
+        }
+
+        private async void OnTimedTakePictureEventAsync(Object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
+                              e.SignalTime);
+
+
+            
         }
 
         private void GrabScreenShot(IntPtr backBuffer)
