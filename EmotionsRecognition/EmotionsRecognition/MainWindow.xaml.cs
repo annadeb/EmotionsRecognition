@@ -248,7 +248,7 @@ namespace EmotionsRecognition
             // Catch and display Face API errors.
             catch (APIErrorException f)
             {
-                //MessageBox.Show(f.Message); //<----------------------------TUUUUUUUUUUUUUUUUUUUUUUUUUuu
+                MessageBox.Show(f.Message); //<----------------------------TUUUUUUUUUUUUUUUUUUUUUUUUUuu
                 return new List<DetectedFace>();
             }
             // Catch and display all other errors.
@@ -292,7 +292,7 @@ namespace EmotionsRecognition
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("Twarz: ");
+            //sb.Append("Twarz: ");
 
             // Add the gender, age, and smile.
             if (face.FaceAttributes.Gender == Gender.Female)
@@ -305,93 +305,102 @@ namespace EmotionsRecognition
             }
 
             sb.Append(", ");
-            sb.Append(face.FaceAttributes.Age);
-            sb.Append(", ");
-            sb.Append(String.Format("uśmiech {0:F1}%, ", face.FaceAttributes.Smile * 100));
-
-            // Add the emotions. Display all emotions over 10%.
-            sb.Append("Emocja: ");
+            sb.Append("Wiek: " + face.FaceAttributes.Age);
+            //sb.Append(", ");
+            //sb.Append(String.Format("uśmiech {0:F1}%, ", face.FaceAttributes.Smile * 100));
+           // sb.Append("\n");
+            // Add the emotions. Display all emotions over 10%. - nie
+           // sb.Append("Emocja: ");
+            sb.Append("\n");
             Emotion emotionScores = face.FaceAttributes.Emotion;
-            if (emotionScores.Anger >= 0.1f) sb.Append(
-                String.Format("złość {0:F1}%, ", emotionScores.Anger * 100));
-            if (emotionScores.Contempt >= 0.1f) sb.Append(
-                String.Format("pogarda {0:F1}%, ", emotionScores.Contempt * 100));
-            if (emotionScores.Disgust >= 0.1f) sb.Append(
-                String.Format("obrzydzenie {0:F1}%, ", emotionScores.Disgust * 100));
-            if (emotionScores.Fear >= 0.1f) sb.Append(
-                String.Format("strach {0:F1}%, ", emotionScores.Fear * 100));
-            if (emotionScores.Happiness >= 0.1f) sb.Append(
-                String.Format("szczęście {0:F1}%, ", emotionScores.Happiness * 100));
-            if (emotionScores.Neutral >= 0.1f) sb.Append(
-                String.Format("neutralny {0:F1}%, ", emotionScores.Neutral * 100));
-            if (emotionScores.Sadness >= 0.1f) sb.Append(
-                String.Format("smutek {0:F1}%, ", emotionScores.Sadness * 100));
-            if (emotionScores.Surprise >= 0.1f) sb.Append(
-                String.Format("zaskoczenie {0:F1}%, ", emotionScores.Surprise * 100));
+          //  if (emotionScores.Anger >= 0.1f) 
+                sb.Append("\n" +
+                String.Format("Złość {0:F1}%, ", emotionScores.Anger * 100));
+           // if (emotionScores.Contempt >= 0.1f) 
+            sb.Append("\n" +
+                String.Format("Pogarda {0:F1}%, ", emotionScores.Contempt * 100));
+          //  if (emotionScores.Disgust >= 0.1f) 
+            sb.Append("\n" +
+                String.Format("Obrzydzenie {0:F1}%, ", emotionScores.Disgust * 100));
+           // if (emotionScores.Fear >= 0.1f) 
+            sb.Append("\n" +
+                String.Format("Strach {0:F1}%, ", emotionScores.Fear * 100));
+           // if (emotionScores.Happiness >= 0.1f) 
+            sb.Append("\n" +
+                String.Format("Szczęście {0:F1}%, ", emotionScores.Happiness * 100));
+          //  if (emotionScores.Neutral >= 0.1f) 
+            sb.Append("\n" +
+                String.Format("Neutralny {0:F1}%, ", emotionScores.Neutral * 100));
+          //  if (emotionScores.Sadness >= 0.1f) 
+            sb.Append("\n" +
+                String.Format("Smutek {0:F1}%, ", emotionScores.Sadness * 100));
+           // if (emotionScores.Surprise >= 0.1f) 
+            sb.Append("\n" +
+                String.Format("Zaskoczenie {0:F1}%, ", emotionScores.Surprise * 100));
 
             // Add glasses.
-            switch (face.FaceAttributes.Glasses)
-            {
-                case GlassesType.NoGlasses:
-                        sb.Append("Brak okularów");
-                    break;
+            //switch (face.FaceAttributes.Glasses)
+            //{
+            //    case GlassesType.NoGlasses:
+            //            sb.Append("\n" + "Brak okularów");
+            //        break;
 
-                case GlassesType.ReadingGlasses:
-                    sb.Append("Okulary korekcyjne");
-                    break;
-                case GlassesType.Sunglasses:
-                    sb.Append("Okulary przeciwsłoneczne");
-                    break;
-                case GlassesType.SwimmingGoggles:
-                    sb.Append("Gogle pływackie");
-                    break;
-                default:
-                    sb.Append(face.FaceAttributes.Glasses);
-                    break;
-            }
+            //    case GlassesType.ReadingGlasses:
+            //        sb.Append("\n" + "Okulary korekcyjne");
+            //        break;
+            //    case GlassesType.Sunglasses:
+            //        sb.Append("\n" + "Okulary przeciwsłoneczne");
+            //        break;
+            //    case GlassesType.SwimmingGoggles:
+            //        sb.Append("\n" + "Gogle pływackie");
+            //        break;
+            //    default:
+            //        sb.Append(face.FaceAttributes.Glasses);
+            //        break;
+            //}
             
-            sb.Append(", ");
+            //sb.Append(", ");
 
-            // Add hair.
-            sb.Append("Włosy: ");
+            //// Add hair.
+            //sb.Append("\nWłosy: ");
 
-            // Display baldness confidence if over 1%.
-            if (face.FaceAttributes.Hair.Bald >= 0.01f)
-                sb.Append(String.Format("łysina {0:F1}% ", face.FaceAttributes.Hair.Bald * 100));
+            //// Display baldness confidence if over 1%.
+            //if (face.FaceAttributes.Hair.Bald >= 0.01f)
+            //    sb.Append(String.Format("\nłysina {0:F1}% ", face.FaceAttributes.Hair.Bald * 100));
 
-            // Display all hair color attributes over 10%.
-            IList<HairColor> hairColors = face.FaceAttributes.Hair.HairColor;
-            foreach (HairColor hairColor in hairColors)
-            {
-                if (hairColor.Confidence >= 0.1f)
-                {
-                    //switch (HairColorType)
-                    //{
-                    //    case HairColorType.Unknown:
-                    //        break;
-                    //    case HairColorType.White:
-                    //        break;
-                    //    case HairColorType.Gray:
-                    //        break;
-                    //    case HairColorType.Blond:
-                    //        break;
-                    //    case HairColorType.Brown:
-                    //        break;
-                    //    case HairColorType.Red:
-                    //        break;
-                    //    case HairColorType.Black:
-                    //        break;
-                    //    case HairColorType.Other:
-                    //        break;
-                    //    default:
-                    //        break;
-                    //}
+            //// Display all hair color attributes over 10%.
+            //IList<HairColor> hairColors = face.FaceAttributes.Hair.HairColor;
+            //foreach (HairColor hairColor in hairColors)
+            //{
+            //    if (hairColor.Confidence >= 0.1f)
+            //    {
+            //        //switch (HairColorType)
+            //        //{
+            //        //    case HairColorType.Unknown:
+            //        //        break;
+            //        //    case HairColorType.White:
+            //        //        break;
+            //        //    case HairColorType.Gray:
+            //        //        break;
+            //        //    case HairColorType.Blond:
+            //        //        break;
+            //        //    case HairColorType.Brown:
+            //        //        break;
+            //        //    case HairColorType.Red:
+            //        //        break;
+            //        //    case HairColorType.Black:
+            //        //        break;
+            //        //    case HairColorType.Other:
+            //        //        break;
+            //        //    default:
+            //        //        break;
+            //        //}
                                        
-                    sb.Append(hairColor.Color.ToString());
+            //        sb.Append(hairColor.Color.ToString());
 
-                    sb.Append(String.Format(" {0:F1}% ", hairColor.Confidence * 100));
-                }
-            }
+            //        sb.Append(String.Format(" {0:F1}% ", hairColor.Confidence * 100));
+            //    }
+            //}
 
             // Return the built string.
             return sb.ToString();
@@ -434,7 +443,7 @@ namespace EmotionsRecognition
            
             using (var db = new EmotionsRecognitionDbContext())
             {
-                // Display all Blogs from the database
+                // Display from the database
                 var rand = new Random();
                 int id = rand.Next(101);
 
@@ -462,7 +471,7 @@ namespace EmotionsRecognition
             mediaUriElement.Close();
             SetPlayButtons(false);
 
-            IntPtr backBuffer=new IntPtr();
+            IntPtr backBuffer = new IntPtr();
             _player = new MediaUriPlayer();
             _player.EnsureThread(ApartmentState.MTA);
             _player.NewAllocatorFrame += () => GrabScreenShot(backBuffer);
@@ -482,8 +491,8 @@ namespace EmotionsRecognition
        PixelFormats.Default);
             bmp1.Render(cameraCaptureElement);
             DateTime dt = DateTime.Now;
-            var date = dt.ToString().Replace(" ", "-").Replace(":","-");
-            var filePath = ".\\images\\image" + date +".jpg";
+            var date = dt.ToString().Replace(" ", "-").Replace(":", "-");
+            var filePath = ".\\images\\image" + date + ".jpg";
             BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bmp1));
 
@@ -512,7 +521,7 @@ namespace EmotionsRecognition
 
             FacePhoto.Source = bitmapSource;
             await DetectFacesAsync(filePath, bitmapSource);
-            
+
             //DialogResult = true;
 
 
