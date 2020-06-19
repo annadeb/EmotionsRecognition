@@ -62,7 +62,7 @@
        
             <Image x:Name="FacePhoto" Grid.Row="3" Height="Auto" Width="Auto"  Grid.Column="0" Grid.ColumnSpan="2" Stretch="Uniform" Margin="0,0,0,50" MouseMove="FacePhoto_MouseMove" />
         <DockPanel DockPanel.Dock="Bottom" Grid.Row="4">
-                <Button x:Name="BrowseButton" Width="72" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+            <Button x:Name="BrowseButton" MinWidth="50" Padding="4" Margin="4" VerticalAlignment="Bottom" HorizontalAlignment="Left"
                      Content="Wstaw obraz..."
                      Click="BrowseButton_Click" />
                 <!--<StatusBar VerticalAlignment="Bottom">
@@ -71,7 +71,7 @@
                     </StatusBarItem>
                 </StatusBar>-->
             </DockPanel>
-        <TextBlock  Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" FontSize="20" Name="faceDescriptionStatusBar" />
+        <TextBlock  Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" FontSize="20" Width="244" HorizontalAlignment="Center" Name="faceDescriptionStatusBar" />
 
     </Grid>
 </Window>

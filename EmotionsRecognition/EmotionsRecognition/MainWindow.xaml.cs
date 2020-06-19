@@ -160,6 +160,7 @@ namespace EmotionsRecognition
 
                     // Store the face description.
                     faceDescriptions[i] = FaceDescription(face);
+                    faceDescriptionStatusBar.Text = faceDescriptions[i];
                 }
 
                 drawingContext.Close();
@@ -176,7 +177,7 @@ namespace EmotionsRecognition
                 FacePhoto.Source = faceWithRectBitmap;
 
                 // Set the status bar text.
-                faceDescriptionStatusBar.Text = defaultStatusBarText;
+                //faceDescriptionStatusBar.Text = defaultStatusBarText;
             }
         }
 
@@ -218,7 +219,7 @@ namespace EmotionsRecognition
             }
 
             // String to display when the mouse is not over a face rectangle.
-            if (!mouseOverFace) faceDescriptionStatusBar.Text = defaultStatusBarText;
+           // if (!mouseOverFace) faceDescriptionStatusBar.Text = defaultStatusBarText;
         }
         // Uploads the image file and calls DetectWithStreamAsync.
         private async Task<IList<DetectedFace>> UploadAndDetectFaces(string imageFilePath)
@@ -338,6 +339,42 @@ namespace EmotionsRecognition
             sb.Append("\n" +
                 String.Format("Zaskoczenie {0:F1}%, ", emotionScores.Surprise * 100));
 
+            using (var db = new EmotionsRecognitionDbContext())
+            {
+                RecognizedEmotion em = new RecognizedEmotion();
+                em.Anger = (float)emotionScores.Anger;
+                em.Contempt = (float)emotionScores.Contempt;
+                em.Disgust = (float)emotionScores.Disgust;
+                em.Fear = (float)emotionScores.Fear;
+                em.Happiness = (float)emotionScores.Happiness;
+                em.Neutral = (float)emotionScores.Neutral;
+                em.Sadness = (float)emotionScores.Sadness;
+                em.Surprise = (float)emotionScores.Surprise;
+                em.TextID = textID;
+                if (face.FaceAttributes.Gender == Gender.Female)
+                {
+                    em.Gender = "Kobieta";
+                }
+                else
+                {
+                    em.Gender = "Mężczyzna";
+                }
+                em.Age = (int)face.FaceAttributes.Age;
+                var query = from b in db.RecognizedEmotions
+                            select b;
+                List<int> list = new List<int>();
+                foreach (var item in query)
+                {
+                    list.Add(item.ID);
+                }
+                em.ID = list[list.Count-1]+1 ;
+
+                db.RecognizedEmotions.Add(em);
+
+                db.SaveChanges();
+
+            }
+
             // Add glasses.
             //switch (face.FaceAttributes.Glasses)
             //{
@@ -358,7 +395,7 @@ namespace EmotionsRecognition
             //        sb.Append(face.FaceAttributes.Glasses);
             //        break;
             //}
-            
+
             //sb.Append(", ");
 
             //// Add hair.
@@ -395,7 +432,7 @@ namespace EmotionsRecognition
             //        //    default:
             //        //        break;
             //        //}
-                                       
+
             //        sb.Append(hairColor.Color.ToString());
 
             //        sb.Append(String.Format(" {0:F1}% ", hairColor.Confidence * 100));
@@ -437,7 +474,8 @@ namespace EmotionsRecognition
         private MediaUriPlayer _player;
 
         private System.Timers.Timer tm;
-
+        private bool isTextVisible = false;
+        private int textID;
         private async void btnStart_Click(object sender, RoutedEventArgs e) // TUUUUUUUUU
         {
            
@@ -445,10 +483,10 @@ namespace EmotionsRecognition
             {
                 // Display from the database
                 var rand = new Random();
-                int id = rand.Next(101);
+                textID = rand.Next(701);
 
                 var query = from b in db.Texts
-                            where b.ID == id
+                            where b.ID == textID
                             select b ;
 
                
@@ -459,6 +497,11 @@ namespace EmotionsRecognition
                 }
 
                
+            }
+            if (!isTextVisible)
+            {
+                isTextVisible = true;
+                return;
             }
 
             //tm = new System.Timers.Timer(2000);
