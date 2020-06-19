@@ -12,8 +12,14 @@ namespace EmotionsRecognition
     using System;
     using System.Collections.Generic;
     
-    public partial class Full
+    public partial class Text
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Text()
+        {
+            this.RecognizedEmotions = new HashSet<RecognizedEmotion>();
+        }
+    
         public Nullable<double> Number { get; set; }
         public string EnglishSentence { get; set; }
         public string PolishSentence { get; set; }
@@ -157,5 +163,8 @@ namespace EmotionsRecognition
         public Nullable<double> F141 { get; set; }
         public string F142 { get; set; }
         public int ID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RecognizedEmotion> RecognizedEmotions { get; set; }
     }
 }

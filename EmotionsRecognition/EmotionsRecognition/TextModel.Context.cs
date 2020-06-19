@@ -25,6 +25,8 @@ namespace EmotionsRecognition
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Full> Fulls { get; set; }
+        public virtual DbSet<Text> Texts { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<RecognizedEmotion> RecognizedEmotions { get; set; }
     }
 }

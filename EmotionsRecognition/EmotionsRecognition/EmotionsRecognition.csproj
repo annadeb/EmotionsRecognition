@@ -85,7 +85,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Full.cs">
+    <Compile Include="RecognizedEmotion.cs">
+      <DependentUpon>TextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>TextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Text.cs">
       <DependentUpon>TextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TextModel.Context.cs">

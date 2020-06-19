@@ -5,7 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="EmotionsRecognitionDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Full">
+        <EntityType Name="RecognizedEmotion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Anger" Type="real" />
+          <Property Name="Contempt" Type="real" />
+          <Property Name="Disgust" Type="real" />
+          <Property Name="Fear" Type="real" />
+          <Property Name="Happiness" Type="real" />
+          <Property Name="Neutral" Type="real" />
+          <Property Name="Sadness" Type="real" />
+          <Property Name="Surprise" Type="real" />
+          <Property Name="TextID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Text">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -153,17 +180,41 @@
           <Property Name="F142" Type="nvarchar" MaxLength="255" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Emotion__TextID__4316F928">
+          <End Role="Text" Type="Self.Text" Multiplicity="1" />
+          <End Role="RecognizedEmotion" Type="Self.RecognizedEmotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Text">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RecognizedEmotion">
+              <PropertyRef Name="TextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EmotionsRecognitionDbModelStoreContainer">
-          <EntitySet Name="Full" EntityType="Self.Full" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecognizedEmotion" EntityType="Self.RecognizedEmotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Text" EntityType="Self.Text" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Emotion__TextID__4316F928" Association="Self.FK__Emotion__TextID__4316F928">
+            <End Role="Text" EntitySet="Text" />
+            <End Role="RecognizedEmotion" EntitySet="RecognizedEmotion" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EmotionsRecognitionDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="EmotionsRecognitionDbContext" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="Fulls" EntityType="EmotionsRecognitionDbModel.Full" />
+          <EntitySet Name="Texts" EntityType="EmotionsRecognitionDbModel.Text" />
+          <EntitySet Name="sysdiagrams" EntityType="EmotionsRecognitionDbModel.sysdiagram" />
+          <EntitySet Name="RecognizedEmotions" EntityType="EmotionsRecognitionDbModel.RecognizedEmotion" />
+          <AssociationSet Name="FK__Emotion__TextID__4316F928" Association="EmotionsRecognitionDbModel.FK__Emotion__TextID__4316F928">
+            <End Role="Text" EntitySet="Texts" />
+            <End Role="RecognizedEmotion" EntitySet="RecognizedEmotions" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Full">
+        <EntityType Name="Text">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -310,16 +361,57 @@
           <Property Name="F141" Type="Double" />
           <Property Name="F142" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RecognizedEmotions" Relationship="EmotionsRecognitionDbModel.FK__Emotion__TextID__4316F928" FromRole="Text" ToRole="RecognizedEmotion" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="RecognizedEmotion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Anger" Type="Single" />
+          <Property Name="Contempt" Type="Single" />
+          <Property Name="Disgust" Type="Single" />
+          <Property Name="Fear" Type="Single" />
+          <Property Name="Happiness" Type="Single" />
+          <Property Name="Neutral" Type="Single" />
+          <Property Name="Sadness" Type="Single" />
+          <Property Name="Surprise" Type="Single" />
+          <Property Name="TextID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Text" Relationship="EmotionsRecognitionDbModel.FK__Emotion__TextID__4316F928" FromRole="RecognizedEmotion" ToRole="Text" />
+        </EntityType>
+        <Association Name="FK__Emotion__TextID__4316F928">
+          <End Type="EmotionsRecognitionDbModel.Text" Role="Text" Multiplicity="1" />
+          <End Type="EmotionsRecognitionDbModel.RecognizedEmotion" Role="RecognizedEmotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Text">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RecognizedEmotion">
+              <PropertyRef Name="TextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EmotionsRecognitionDbModelStoreContainer" CdmEntityContainer="EmotionsRecognitionDbContext" >
-          <EntitySetMapping Name="Fulls">
-            <EntityTypeMapping TypeName="EmotionsRecognitionDbModel.Full">
-              <MappingFragment StoreEntitySet="Full">
+          <EntitySetMapping Name="Texts">
+            <EntityTypeMapping TypeName="EmotionsRecognitionDbModel.Text">
+              <MappingFragment StoreEntitySet="Text">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="F142" ColumnName="F142" />
                 <ScalarProperty Name="F141" ColumnName="F141" />
@@ -463,6 +555,35 @@
                 <ScalarProperty Name="PolishSentence" ColumnName="PolishSentence" />
                 <ScalarProperty Name="EnglishSentence" ColumnName="EnglishSentence" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EmotionsRecognitionDbModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecognizedEmotions">
+            <EntityTypeMapping TypeName="EmotionsRecognitionDbModel.RecognizedEmotion">
+              <MappingFragment StoreEntitySet="RecognizedEmotion">
+                <ScalarProperty Name="TextID" ColumnName="TextID" />
+                <ScalarProperty Name="Surprise" ColumnName="Surprise" />
+                <ScalarProperty Name="Sadness" ColumnName="Sadness" />
+                <ScalarProperty Name="Neutral" ColumnName="Neutral" />
+                <ScalarProperty Name="Happiness" ColumnName="Happiness" />
+                <ScalarProperty Name="Fear" ColumnName="Fear" />
+                <ScalarProperty Name="Disgust" ColumnName="Disgust" />
+                <ScalarProperty Name="Contempt" ColumnName="Contempt" />
+                <ScalarProperty Name="Anger" ColumnName="Anger" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

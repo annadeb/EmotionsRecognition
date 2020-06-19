@@ -4,8 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7188385f12be4aa7bea7242151577400" Name="Diagram1" >
-        <EntityTypeShape EntityType="EmotionsRecognitionDbModel.Full" Width="1.5" PointX="0.75" PointY="0.75" />
+      <Diagram DiagramId="7188385f12be4aa7bea7242151577400" Name="Diagram1" ZoomLevel="124" >
+        <EntityTypeShape EntityType="EmotionsRecognitionDbModel.Text" Width="1.5" PointX="3.375" PointY="2.25" />
+        <EntityTypeShape EntityType="EmotionsRecognitionDbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EmotionsRecognitionDbModel.RecognizedEmotion" Width="1.5" PointX="5.625" PointY="19" />
+        <AssociationConnector Association="EmotionsRecognitionDbModel.FK__Emotion__TextID__4316F928" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -447,7 +447,7 @@ namespace EmotionsRecognition
                 var rand = new Random();
                 int id = rand.Next(101);
 
-                var query = from b in db.Fulls
+                var query = from b in db.Texts
                             where b.ID == id
                             select b ;
 
