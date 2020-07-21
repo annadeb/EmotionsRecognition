@@ -13,5 +13,14 @@ namespace EmotionsRecognition
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            EmotionsRecognition.MainWindow window = new MainWindow();
+            MainViewModel VM = new MainViewModel();
+            window.DataContext = VM;
+            window.Show();
+        }
     }
+
 }
