@@ -9,7 +9,6 @@
         mc:Ignorable="d"
         Title="EmotionRecognition" MinHeight="600"  MinWidth="800" WindowState="Maximized">
     <Window.Resources>
-        <local:EnumToBoolConverter x:Key="EnumToBoolConverter" />
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
