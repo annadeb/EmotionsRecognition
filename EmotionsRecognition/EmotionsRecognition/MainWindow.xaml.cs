@@ -1,24 +1,16 @@
-﻿using System;
+﻿using Microsoft.Azure.CognitiveServices.Vision.Face;
+using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Azure.CognitiveServices.Vision.Face;
-using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
-using Microsoft.Win32;
 using WPFMediaKit.DirectShow.Controls;
 using WPFMediaKit.DirectShow.MediaPlayers;
 
@@ -40,9 +32,6 @@ namespace EmotionsRecognition
         private IList<DetectedFace> faceList;
         private string[] faceDescriptions;
         private double resizeFactor;
-
-        private const string defaultStatusBarText =
-            "Najedź myszką na twarz, aby zobaczyć jej opis.";
 
         public MainWindow()
         {
@@ -75,31 +64,6 @@ namespace EmotionsRecognition
                     "Invalid URI", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(0);
             }
-        }
-
-        private async void BrowseButton_Click(object sender, RoutedEventArgs e)
-        {
-            var openDlg = new Microsoft.Win32.OpenFileDialog();
-
-            openDlg.Filter = "JPEG Image(*.jpg)|*.jpg";
-            bool? result = openDlg.ShowDialog(this);
-
-            if (!(bool)result)
-            {
-                return;
-            }
-            string filePath = openDlg.FileName;
-
-            Uri fileUri = new Uri(filePath);
-            BitmapImage bitmapSource = new BitmapImage();
-
-            bitmapSource.BeginInit();
-            bitmapSource.CacheOption = BitmapCacheOption.None;
-            bitmapSource.UriSource = fileUri;
-            bitmapSource.EndInit();
-
-            FacePhoto.Source = bitmapSource;
-            await DetectFacesAsync(filePath, bitmapSource);
         }
 
         public async Task DetectFacesAsync(string filePath, BitmapImage bitmapSource)
@@ -147,38 +111,6 @@ namespace EmotionsRecognition
 
                 faceWithRectBitmap.Render(visual);
                 FacePhoto.Source = faceWithRectBitmap;
-            }
-        }
-
-        private void FacePhoto_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (faceList == null)
-                return;
-
-            Point mouseXY = e.GetPosition(FacePhoto);
-
-            ImageSource imageSource = FacePhoto.Source;
-            BitmapSource bitmapSource = (BitmapSource)imageSource;
-
-            var scale = FacePhoto.ActualWidth / (bitmapSource.PixelWidth / resizeFactor);
-
-            bool mouseOverFace = false;
-
-            for (int i = 0; i < faceList.Count; ++i)
-            {
-                FaceRectangle fr = faceList[i].FaceRectangle;
-                double left = fr.Left * scale;
-                double top = fr.Top * scale;
-                double width = fr.Width * scale;
-                double height = fr.Height * scale;
-
-                if (mouseXY.X >= left && mouseXY.X <= left + width &&
-                    mouseXY.Y >= top && mouseXY.Y <= top + height)
-                {
-                    faceDescriptionStatusBar.Text = faceDescriptions[i];
-                    mouseOverFace = true;
-                    break;
-                }
             }
         }
 
@@ -257,7 +189,7 @@ namespace EmotionsRecognition
             sb.Append("\n" +
                 String.Format("Smutek {0:F1}%, ", emotionScores.Sadness * 100));
             sb.Append("\n" +
-                String.Format("Zaskoczenie {0:F1}%, ", emotionScores.Surprise * 100));
+                String.Format("Zaskoczenie {0:F1}%. ", emotionScores.Surprise * 100));
 
             using (var db = new EmotionsRecognitionDbContext())
             {
@@ -296,7 +228,7 @@ namespace EmotionsRecognition
             return sb.ToString();
         }
 
-        private void MediaUriElement_MediaFailed(object sender, WPFMediaKit.DirectShow.MediaPlayers.MediaFailedEventArgs e) // TUUUUUUUUU
+        private void MediaUriElement_MediaFailed(object sender, WPFMediaKit.DirectShow.MediaPlayers.MediaFailedEventArgs e)
         {
             this.Dispatcher.BeginInvoke(new Action(() => errorText.Text = e.Message));
         }
@@ -378,19 +310,13 @@ namespace EmotionsRecognition
             await DetectFacesAsync(filePath, bitmapSource);
         }
 
-        private static void OnTimedTakePictureEvent(Object source, ElapsedEventArgs e)
-        {
-            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
-                              e.SignalTime);
-        }
-
         private void GrabScreenShot(IntPtr backBuffer)
         {
             D3DImage d3d = new D3DImage();
             FacePhoto.Source = (ImageSource)d3d;
         }
 
-        private void cobVideoSource_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) // TUUUUUUUUU
+        private void cobVideoSource_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (cobVideoSource.SelectedIndex < 0)
                 return;

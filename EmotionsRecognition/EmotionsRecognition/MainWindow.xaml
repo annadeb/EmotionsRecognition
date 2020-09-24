@@ -114,7 +114,7 @@
 
         <StackPanel Grid.Column="0"  Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center">
             <Label Content="Wybierz kamerę: " VerticalAlignment="Center" FontSize="20" Margin="0,0,40,0"/>
-            <ComboBox x:Name="cobVideoSource" Width="200" FontSize="20" Margin="0,0,40,0" SelectionChanged="cobVideoSource_SelectionChanged" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cobVideoSource" Width="210" FontSize="20" Margin="0,0,40,0" SelectionChanged="cobVideoSource_SelectionChanged" VerticalAlignment="Center"/>
             <CheckBox IsChecked="False" Name="hideCameraCb" Content="Ukryj kamery" FontSize="20" VerticalAlignment="Center" Checked="hideCameraCb_Checked" Unchecked="hideCameraCb_Unchecked" Style="{DynamicResource CheckBoxStyle}"/>
         </StackPanel>
         <TextBlock x:Name="errorText" Grid.Row="1" TextWrapping="Wrap" Foreground="IndianRed" Margin="4" />
@@ -123,10 +123,7 @@
         <Rectangle x:Name="rectangle" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Fill="White" Visibility="Hidden"/>
         <Button x:Name="btnStart" FontSize="20" Click="btnStart_Click" Grid.Row="2" Grid.Column="2" Content="Start" Width="250" Padding="4" Margin="4"/>
         <TextBlock Grid.Column="2" Grid.Row="1" FontSize="24" Height="Auto" HorizontalAlignment="Center" x:Name="textTextBlock" TextAlignment="Center" TextWrapping="Wrap" Margin="10"><Run Text="Tu będzie wyświetlany tekst"/></TextBlock>
-        <Image x:Name="FacePhoto" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="4" MouseMove="FacePhoto_MouseMove" />
-        <Button x:Name="BrowseButton" Width="250" Grid.Row="4" Grid.Column="2" FontSize="20" Padding="4" Margin="4" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                     Content="Wstaw obraz z pliku"
-                     Click="BrowseButton_Click" />
+        <Image x:Name="FacePhoto" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="4" />
         <TextBlock  Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Name="faceDescriptionStatusBar" />
     </Grid>
 </Window>
